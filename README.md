@@ -6,13 +6,13 @@ A Python application that uses classes to create and explore a digital residenti
 
 Create a `House` class.
 
-House objects should have:
+The House class should have:
 
 * A variable for street address
 * A variable for address number
 * A variable for description
 * A variable containing a sequence of rooms
-* A function that returns the name and description
+* A function that returns the address number and description
 
 ## Room
 
