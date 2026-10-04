@@ -1,7 +1,9 @@
+import random
+
 class House:
     def __init__(self,
                  adress: str,
-                 adress_number: int, 
+                 adress_number: int,
                  description: str,
                  rooms: list
                  ):
@@ -66,7 +68,6 @@ class InteractiveFurniture:
             self.description
         )
         return f"I am using the {self.name} to {self.action}."
-
 
 # Create 3 room objects
 kitchen = Room(
@@ -180,85 +181,93 @@ kitchen.furniture.append(blender)
 bedroom.furniture.append(fridge)
 living_room.furniture.append(lamp)
 
+def tornado(houses):
+    all_furniture = []
 
-print("\n=== DIGITAL HOUSE ===")
-print("1. Get house and room descriptions")
-print("2. Get rooms and furniture")
-print("3. Get furniture in a room")
-print("4. Use furniture")
-print("5. Exit")
+    for house in houses:
+        for room in house.rooms:
+            all_furniture.extend(room.furniture)
+            room.furniture = []
 
-choice = input("Choose an option: ")
+    for furniture in all_furniture:
+        random_house = random.choice(houses)
+        random_room = random.choice(random_house.rooms)
+        random_room.furniture.append(furniture)
 
-if choice == "1":
-    print(my_house.number_and_description())
+while True:
+    print("\n=== DIGITAL HOUSE ===")
+    print("1. Get house and room descriptions")
+    print("2. Get rooms and furniture")
+    print("3. Get furniture in a room")
+    print("4. Use furniture")
+    print("5. Tornado")
+    print("6. Exit")
 
-    for room in my_house.rooms:
-        print(room.name_and_description())
+    choice = input("Choose an option: ")
 
-elif choice == "2":
-    for room in my_house.rooms:
-        print(room.name_and_description())
+    if choice == "1":
+        print(my_house.number_and_description())
 
-        for furniture in room.furniture:
-            print(f"  {furniture.name_and_description()}")\
+        for room in my_house.rooms:
+            print(room.name_and_description())
 
-elif choice == "3":
-    print("1. Kitchen")
-    print("2. Bedroom")
-    print("3. Living Room")
+    elif choice == "2":
+        for room in my_house.rooms:
+            print(room.name_and_description())
 
-    room_choice = input("Choose a room: ")
+            for furniture in room.furniture:
+                print(f"  {furniture.name_and_description()}")\
 
-    if room_choice == "1":
-        selected_room = kitchen
-    elif room_choice == "2":
-        selected_room = bedroom
-    elif room_choice == "3":
-        selected_room = living_room
-    else:
-        print("Invalid choice.")
-        selected_room = None
+    elif choice == "3":
+        print("1. Kitchen")
+        print("2. Bedroom")
+        print("3. Living Room")
 
-    if selected_room:
-        print(selected_room.name_and_description())
+        room_choice = input("Choose a room: ")
 
-        for furniture in selected_room.furniture:
-            print(f"  {furniture.name_and_description()}")
+        if room_choice == "1":
+            selected_room = kitchen
+        elif room_choice == "2":
+            selected_room = bedroom
+        elif room_choice == "3":
+            selected_room = living_room
+        else:
+            print("Invalid choice.")
+            selected_room = None
 
-elif choice == "4":
-    print("1. Kitchen")
-    print("2. Bedroom")
-    print("3. Living Room")
+        if selected_room:
+            print(selected_room.name_and_description())
 
-    room_choice = input("Choose a room: ")
+            for furniture in selected_room.furniture:
+                print(f"  {furniture.name_and_description()}")
 
-    if room_choice == "1":
-        selected_room = kitchen
-    elif room_choice == "2":
-        selected_room = bedroom
-    else:
-        selected_room = living_room
+    elif choice == "4":
+        print("1. Kitchen")
+        print("2. Bedroom")
+        print("3. Living Room")
 
-    for number, furniture in enumerate(selected_room.furniture, 1):
-        print(f"{number}. {furniture.name}")
+        room_choice = input("Choose a room: ")
 
-    furniture_choice = int(input("Choose furniture: "))
+        if room_choice == "1":
+            selected_room = kitchen
+        elif room_choice == "2":
+            selected_room = bedroom
+        else:
+            selected_room = living_room
 
-    selected_furniture = selected_room.furniture[furniture_choice - 1]
+        for number, furniture in enumerate(selected_room.furniture, 1):
+            print(f"{number}. {furniture.name}")
 
-    print(selected_furniture.use())
+        furniture_choice = int(input("Choose furniture: "))
 
-elif choice == "5":
-    print("Goodbye!")
+        selected_furniture = selected_room.furniture[furniture_choice - 1]
 
+        print(selected_furniture.use())
 
-# ## Tornado
+    elif choice == "5":
+        tornado([my_house])
+        print("A tornado has moved all the furniture!")
 
-# Import the `random` module.
-# Create a tornado function that:
-
-# * Collects all furniture
-# * Randomly distributes the furniture between all rooms in all houses
-
-# The menu should include an option to use the tornado function.
+    elif choice == "6":
+        print("Goodbye!")
+        break
