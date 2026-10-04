@@ -42,7 +42,7 @@ class Furniture:
         return f"{self.name} - {self.description}."
 
     def use(self):
-        return f"I am using the {self.name} for {self.action}."
+        return f"I am using the {self.name} to {self.action}."
 
 
 class InteractiveFurniture:
@@ -226,18 +226,31 @@ elif choice == "3":
         for furniture in selected_room.furniture:
             print(f"  {furniture.name_and_description()}")
 
+elif choice == "4":
+    print("1. Kitchen")
+    print("2. Bedroom")
+    print("3. Living Room")
+
+    room_choice = input("Choose a room: ")
+
+    if room_choice == "1":
+        selected_room = kitchen
+    elif room_choice == "2":
+        selected_room = bedroom
+    else:
+        selected_room = living_room
+
+    for number, furniture in enumerate(selected_room.furniture, 1):
+        print(f"{number}. {furniture.name}")
+
+    furniture_choice = int(input("Choose furniture: "))
+
+    selected_furniture = selected_room.furniture[furniture_choice - 1]
+
+    print(selected_furniture.use())
+
 elif choice == "5":
     print("Goodbye!")
-
-# ## Menu
-# The menu should allow the user to:
-
-# * Get the description of a house object and its rooms
-# * Get the description of a house object's room objects and their furniture
-# * Get the description of a room object's furniture objects
-# * Use a furniture object
-
-# Use the menu to explore the house created above.
 
 
 # ## Tornado
