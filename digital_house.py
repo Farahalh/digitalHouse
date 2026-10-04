@@ -196,6 +196,13 @@ if choice == "1":
     for room in my_house.rooms:
         print(room.name_and_description())
 
+elif choice == "2":
+    for room in my_house.rooms:
+        print(room.name_and_description())
+
+        for furniture in room.furniture:
+            print(f"  {furniture.name_and_description()}")
+
 elif choice == "5":
     print("Goodbye!")
 
