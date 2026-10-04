@@ -201,6 +201,29 @@ elif choice == "2":
         print(room.name_and_description())
 
         for furniture in room.furniture:
+            print(f"  {furniture.name_and_description()}")\
+
+elif choice == "3":
+    print("1. Kitchen")
+    print("2. Bedroom")
+    print("3. Living Room")
+
+    room_choice = input("Choose a room: ")
+
+    if room_choice == "1":
+        selected_room = kitchen
+    elif room_choice == "2":
+        selected_room = bedroom
+    elif room_choice == "3":
+        selected_room = living_room
+    else:
+        print("Invalid choice.")
+        selected_room = None
+
+    if selected_room:
+        print(selected_room.name_and_description())
+
+        for furniture in selected_room.furniture:
             print(f"  {furniture.name_and_description()}")
 
 elif choice == "5":
