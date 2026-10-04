@@ -180,20 +180,24 @@ kitchen.furniture.append(blender)
 bedroom.furniture.append(fridge)
 living_room.furniture.append(lamp)
 
-print(my_house.number_and_description())
 
-print(kitchen.name_and_description())
-print(bedroom.name_and_description())
-print(living_room.name_and_description())
+print("\n=== DIGITAL HOUSE ===")
+print("1. Get house and room descriptions")
+print("2. Get rooms and furniture")
+print("3. Get furniture in a room")
+print("4. Use furniture")
+print("5. Exit")
 
-# ## Furnishing a House
-# Create:
+choice = input("Choose an option: ")
 
-# * At least 1 house object
-# * At least 3 room objects and assign them to the house object's sequence of rooms
-# * At least 6 furniture objects and assign them to the room object's sequence of furniture
-# * At least 3 interactive furniture objects and assign
-# them to the room object's sequence of furniture
+if choice == "1":
+    print(my_house.number_and_description())
+
+    for room in my_house.rooms:
+        print(room.name_and_description())
+
+elif choice == "5":
+    print("Goodbye!")
 
 # ## Menu
 # The menu should allow the user to:
@@ -204,13 +208,6 @@ print(living_room.name_and_description())
 # * Use a furniture object
 
 # Use the menu to explore the house created above.
-
-# ## Neighbour
-# Use Git to share the project with group members.
-
-# * Create a Git branch for each group member.
-# * Each group member should complete the house furnishing task.
-# * Where and how the code should be changed may only be communicated through self-documenting code.
 
 
 # ## Tornado
