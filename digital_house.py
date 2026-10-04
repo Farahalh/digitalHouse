@@ -95,6 +95,39 @@ print(my_furniture.use())
 # When the function is used, the description variable and
 # the alternative state description variable should switch.
 
+class InteractiveFurniture:
+    def __init__(self,
+                 name: str,
+                 description: str,
+                 alternate_state: str,
+                 action: str
+                 ):
+        self.name = name
+        self.description = description
+        self.alternate_state = alternate_state
+        self.action = action
+
+    def name_and_description(self):
+        return f"{self.name} - {self.description}."
+
+    def use(self):
+        self.description, self.alternate_state = (
+            self.alternate_state,
+            self.description
+        )
+        return f"I am using the {self.name} to {self.action}."
+
+my_interactive_furniture = InteractiveFurniture(
+    "blender",
+    "Blends food and liquids",
+    "Hard to clean after use",
+    "make my morning smoothie"
+)
+
+print(my_interactive_furniture.name_and_description())
+print(my_interactive_furniture.use())
+print(my_interactive_furniture.name_and_description())
+
 # ## Furnishing a House
 # Create:
 
