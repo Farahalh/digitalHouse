@@ -1,18 +1,9 @@
-# Create a `House` class.
-# The House class should have:
-
-# * A variable for street address
-# * A variable for address number
-# * A variable for description
-# * A variable containing a sequence of rooms
-# * A function that returns the address number and description
-
 class House:
     def __init__(self,
                  adress: str,
                  adress_number: int, 
                  description: str,
-                 rooms: list[str]
+                 rooms: list
                  ):
         self.adress = adress
         self.adress_number = adress_number
@@ -22,22 +13,12 @@ class House:
     def number_and_description(self):
         return f"{self.adress_number} - {self.description}."
 
-my_house = House("Canary Drive", 45, "a nice house", ["Kitchen", "Bedroom", "Bathroom"])
-print(my_house.number_and_description())
-
-# Create a `Room` class.
-# Room objects should have:
-
-# * A variable for name
-# * A variable for description
-# * A variable containing a sequence of furniture
-# * A function that returns the name and description
 
 class Room:
     def __init__(self,
                  name: str,
                  description: str,
-                 furniture: list[str]
+                 furniture: list
                  ):
         self.name = name
         self.description = description
@@ -46,17 +27,6 @@ class Room:
     def name_and_description(self):
         return f"{self.name} - {self.description}."
 
-my_room = Room("Kitchen", "Where I cook and eat", ["Table", "Four chairs", "Stove", "Sink"])
-print(my_room.name_and_description())
-
-
-# Create a `Furniture` class.
-# Furniture objects should have:
-
-# * A variable for name
-# * A variable for description
-# * A function that returns the name and description
-# * A function that "uses" the furniture object
 
 class Furniture:
     def __init__(self,
@@ -74,26 +44,6 @@ class Furniture:
     def use(self):
         return f"I am using the {self.name} for {self.action}."
 
-my_furniture = Furniture(
-    "Sink", 
-    "Where I clean all my dishes", 
-    "washing dishes"
-    )
-
-print(my_furniture.name_and_description())
-print(my_furniture.use())
-
-# Create an `InteractiveFurniture` class.
-# Interactive furniture objects should have:
-
-# * A variable for name
-# * A variable for description
-# * A variable for the description of the alternative state
-# * A function that returns the name and description
-# * A function that "uses" the furniture object
-
-# When the function is used, the description variable and
-# the alternative state description variable should switch.
 
 class InteractiveFurniture:
     def __init__(self,
@@ -117,16 +67,124 @@ class InteractiveFurniture:
         )
         return f"I am using the {self.name} to {self.action}."
 
-my_interactive_furniture = InteractiveFurniture(
-    "blender",
-    "Blends food and liquids",
-    "Hard to clean after use",
-    "make my morning smoothie"
+
+# Create 3 room objects
+kitchen = Room(
+    "Kitchen",
+    "Where I cook and eat",
+    []
 )
 
-print(my_interactive_furniture.name_and_description())
-print(my_interactive_furniture.use())
-print(my_interactive_furniture.name_and_description())
+bedroom = Room(
+    "Bedroom",
+    "Where I sleep",
+    []
+)
+
+living_room = Room(
+    "Living Room",
+    "Where I relax",
+    []
+)
+
+
+# Create 1 house object
+# and assign the 3 rooms to it
+my_house = House(
+    "Canary Drive", 
+    45,
+    "a nice house", 
+    [kitchen, bedroom, living_room]
+)
+
+
+# Create 6 furniture objects
+table = Furniture(
+    "Table",
+    "A place to eat",
+    "eat a meal"
+)
+
+chair = Furniture(
+    "Chair",
+    "A seat for sitting",
+    "sit down"
+)
+
+bed = Furniture(
+    "Bed",
+    "A place to sleep",
+    "sleep"
+)
+
+wardrobe = Furniture(
+    "Wardrobe",
+    "A place to store clothes",
+    "store clothes"
+)
+
+sofa = Furniture(
+    "Sofa",
+    "A comfortable place to sit",
+    "relax"
+)
+
+bookshelf = Furniture(
+    "Bookshelf",
+    "A place to store books",
+    "read a book"
+)
+
+
+# Assign the 6 furniture objects to rooms
+kitchen.furniture = [
+    table,
+    chair
+]
+
+bedroom.furniture = [
+    bed,
+    wardrobe
+]
+
+living_room.furniture = [
+    sofa,
+    bookshelf
+]
+
+
+# Create 3 interactive furniture objects
+blender = InteractiveFurniture(
+    "Blender",
+    "Blends food and liquids",
+    "Hard to clean after use",
+    "make a smoothie"
+)
+
+fridge = InteractiveFurniture(
+    "Fridge",
+    "Keeps food cold",
+    "The door is open",
+    "get some food"
+)
+
+lamp = InteractiveFurniture(
+    "Lamp",
+    "Provides light",
+    "The light is on",
+    "turn on the light"
+)
+
+# Assign the 3 interactive furniture objects to rooms
+kitchen.furniture.append(blender)
+bedroom.furniture.append(fridge)
+living_room.furniture.append(lamp)
+
+print(my_house.number_and_description())
+
+print(kitchen.name_and_description())
+print(bedroom.name_and_description())
+print(living_room.name_and_description())
 
 # ## Furnishing a House
 # Create:
@@ -153,6 +211,7 @@ print(my_interactive_furniture.name_and_description())
 # * Create a Git branch for each group member.
 # * Each group member should complete the house furnishing task.
 # * Where and how the code should be changed may only be communicated through self-documenting code.
+
 
 # ## Tornado
 
