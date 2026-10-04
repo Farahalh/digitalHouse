@@ -33,6 +33,23 @@ print(my_house.number_and_description())
 # * A variable containing a sequence of furniture
 # * A function that returns the name and description
 
+class Room:
+    def __init__(self,
+                 name: str,
+                 description: str,
+                 furniture: list[str]
+                 ):
+        self.name = name
+        self.description = description
+        self.furniture = furniture
+
+    def name_and_description(self):
+        return f"{self.name} - {self.description}."
+
+my_room = Room("Kitchen", "Where I cook and eat", ["Table", "Four chairs", "Stove", "Sink"])
+print(my_room.name_and_description())
+
+
 
 # Create a `Furniture` class.
 # Furniture objects should have:
