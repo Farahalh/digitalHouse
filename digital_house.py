@@ -50,7 +50,6 @@ my_room = Room("Kitchen", "Where I cook and eat", ["Table", "Four chairs", "Stov
 print(my_room.name_and_description())
 
 
-
 # Create a `Furniture` class.
 # Furniture objects should have:
 
@@ -59,6 +58,30 @@ print(my_room.name_and_description())
 # * A function that returns the name and description
 # * A function that "uses" the furniture object
 
+class Furniture:
+    def __init__(self,
+                 name:str,
+                 description: str,
+                 action: str
+                 ):
+        self.name = name
+        self.description = description
+        self.action = action
+
+    def name_and_description(self):
+        return f"{self.name} - {self.description}."
+
+    def use(self):
+        return f"I am using the {self.name} for {self.action}."
+
+my_furniture = Furniture(
+    "Sink", 
+    "Where I clean all my dishes", 
+    "washing dishes"
+    )
+
+print(my_furniture.name_and_description())
+print(my_furniture.use())
 
 # Create an `InteractiveFurniture` class.
 # Interactive furniture objects should have:
